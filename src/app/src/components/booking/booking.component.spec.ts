@@ -53,7 +53,8 @@ describe('BookingComponent (shows dialog of booking data per home)', () => {
     expect(el('label[for="checkout"]')).toBeTruthy();
   });
 
-  it('should show total price', async(() => {
+  // SUCCESSFUL TEST
+  it('should show total price (working version)', async(() => {
     // user enters a check-in date: i.e. 12/20/19
     component.checkinDate = '2019/12/20';
     fixture.detectChanges();
@@ -67,6 +68,24 @@ describe('BookingComponent (shows dialog of booking data per home)', () => {
     expect(totalElement.textContent).toContain('$375');
   }));
 
+  // FAILING TEST
+  it('should show total price (non-functional version)', async(() => {
+    const checkin = el('input#checkin[type="date"]');
+    const checkout = el('input#checkout[type="date"]');
+    // user enters a check-in date: i.e. 12/20/19
+    checkin.value = '2019/12/20';
+    fixture.detectChanges();
+
+    // user enters a check-out date: i.e. 12/23/19
+    checkout.value = '2019/12/23';
+    fixture.detectChanges();
+
+    const totalElement = el('[data-test="total"]');
+    // Confirm total is $375
+    expect(totalElement.textContent).toContain('$375');
+  }));
+
+  // Uncomplete
   xit('should book home after clicking book button', () => {
     // user enters a check-in date: i.e. 12/20/19
     const checkin = el('input#checkin[type="date"]');
