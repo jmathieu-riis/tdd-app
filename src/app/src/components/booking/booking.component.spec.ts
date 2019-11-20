@@ -69,15 +69,18 @@ describe('BookingComponent (shows dialog of booking data per home)', () => {
   }));
 
   // FAILING TEST
-  it('should show total price (non-functional version)', async(() => {
-    const checkin = el('input#checkin[type="date"]');
-    const checkout = el('input#checkout[type="date"]');
+  fit('should show total price (non-functional version)', async(() => {
+    const checkin = el('input#checkin');
+    const checkout = el('input#checkout');
+
     // user enters a check-in date: i.e. 12/20/19
     checkin.value = '2019/12/20';
+    checkin.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
     // user enters a check-out date: i.e. 12/23/19
     checkout.value = '2019/12/23';
+    checkout.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
     const totalElement = el('[data-test="total"]');
