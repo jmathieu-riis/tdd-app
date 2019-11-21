@@ -1,14 +1,12 @@
 <div data-test="title">Book {{data.home.title}}</div>
 <div data-test="price">${{data.home.price}} per night</div>
 <label for="checkin">Select Date to Check In</label>
-<input type="date"
-       id="checkin"
+<input id="checkin"
        [(ngModel)]="checkinDate">
 <label for="checkout">Select Date to Check Out</label>
-<input type="date"
-       id="checkout"
+<input id="checkout"
        [(ngModel)]="checkoutDate">
-<div data-test="total">${{calculateTotal()}}</div>
+<div data-test="total">${{calculateTotal(checkinDate, checkoutDate)}}</div>
 <div>
   <button
     (click)="onBookHome()"

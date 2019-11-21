@@ -26,9 +26,9 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.mySub.unsubscribe();
   }
 
-  calculateTotal() {
-    const checkinMoment = moment(this.checkinDate, 'YYYY-MM-DD');
-    const checkoutMoment = moment(this.checkoutDate, 'YYYY-MM-DD');
+  calculateTotal(checkIn, checkOut) {
+    const checkinMoment = moment(checkIn, 'YYYY-MM-DD');
+    const checkoutMoment = moment(checkOut, 'YYYY-MM-DD');
     const days = checkoutMoment.diff(checkinMoment, 'days');
     return days <= 0 || isNaN(days) ? 0 : days * this.data.home.price;
   }
