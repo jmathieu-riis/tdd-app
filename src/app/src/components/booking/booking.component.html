@@ -9,3 +9,10 @@
        id="checkout"
        [(ngModel)]="checkoutDate">
 <div data-test="total">${{calculateTotal()}}</div>
+<div>
+  <button
+    (click)="onBookHome()"
+    style="cursor: pointer"
+    class="uk-button-primary"
+    id="book">Book</button>
+</div>

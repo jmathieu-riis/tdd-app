@@ -12,4 +12,8 @@ export class DialogService {
   open(component, info) {
     this.dialog.open(component, info);
   }
+
+  close(component) {
+    return null;
+  }
 }
